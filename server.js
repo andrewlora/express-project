@@ -13,7 +13,18 @@ const friends = [
     id: 1,
     name: "Sir Isaac Newton",
   },
+  {
+    id: 2,
+    name: "Nikola Tesla",
+  },
 ];
+
+app.use((req, res, next) => {
+  const start = Date.now();
+  next();
+  const delta = Date.now() - start;
+  console.log(`${req.method} ${req.url} ${delta}ms`);
+});
 
 app.get("/", (req, res) => {
   res.send("Hello");
